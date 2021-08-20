@@ -3,7 +3,11 @@ This project is using [docker-code-server](https://github.com/linuxserver/docker
 
 ## Installation
 First clone the repo using:<br/>
-```git clone https://github.com/shywn-mrk/code-server-dockerized.git```
+```bash
+git clone https://github.com/shywn-mrk/code-server-dockerized.git
+```
 
 After that you can run the project using [docker-compose](https://docs.docker.com/compose/) and before running this command make sure you have it installed:<br/>
-```docker-compose up --build```
+```bash
+docker-compose up --build
+```
