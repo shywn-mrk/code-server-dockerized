@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  code-server:
+    image: ghcr.io/linuxserver/code-server
+    container_name: code-server
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Iran
+      - PASSWORD=${PASSWORD}
+      - SUDO_PASSWORD=${SUDO_PASSWORD}
+    volumes: 
+      - ./config:/config
+    ports:
+      - 8443:8443
+    restart: unless-stopped
+    networks:
+      - nginx-proxy
+      - default
+
+  nginx:
+    container_name: nginx
+    restart: always
+    build: ./nginx
+    ports:
+      - 80:80
+    depends_on:
+      - code-server
+    networks:
+      - nginx-proxy
+      - default
+
+networks:
+  nginx-proxy:
